@@ -35,9 +35,16 @@ app.get('/',(req,res)=>{
     )
 })
 
-app.use('*',function(req,res){
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-})
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function( _,res){
+    res.sendFile(
+        path.join(__dirname,"./client/build/index.html"),
+        function(err){
+            res.status(500).send(err);
+        }
+    
+    );
+});
 
 //port
 // const PORT = 8080

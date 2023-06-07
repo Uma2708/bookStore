@@ -22,7 +22,7 @@ router.post(
 );
 
 //update category
-router.put(
+router.put( 
   "/update-category/:id",
   requireSignIn,
   isAdmin,
